@@ -4,8 +4,9 @@
   "description": "Scaffolding to build new kozz modules",
   "main": "./dist/index.js",
   "scripts": {
-    "build": "babel ./src --out-dir ./dist --extensions .ts,.tsx --copy-files",
-    "dev": "bun run build -- --watch & nodemon --watch dist --exec 'bun run dist/index.js'"
+    "build": "babel ./src --out-dir ./dist --extensions .ts,.tsx --copy-files --source-maps",
+    "dev": "npm run build -- --watch & node --watch --watch-path=dist --env-file=.env --enable-source-maps dist/index.js",
+    "start": "npm run build && node --env-file=.env dist/index.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,6 @@
   },
   "homepage": "https://github.com/Kozz-Bot/kozz-module-scaffolding#readme",
   "dependencies": {
-    "kozz-module-maker": "^0.2.4"
+    "kozz-module-maker": "^0.3.0"
   }
 }
